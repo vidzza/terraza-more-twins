@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terraza More Twins — Salón de Eventos en Ciudad Juárez</title>
 <meta name="description" content="Terraza More Twins — el lugar perfecto para tu celebración en Ciudad Juárez. Bodas, XV años, graduaciones y eventos corporativos. Reserva tu fecha.">
-<meta name="theme-color" content="#c08410">
+<meta name="theme-color" content="#a06d09">
 <meta name="author" content="Terraza More Twins">
 <link rel="canonical" href="https://vidzza.github.io/terraza-more-twins/">
 
 <!-- Favicon -->
 <link rel="icon" href="./assets/logo.jpg">
 <link rel="apple-touch-icon" href="./assets/logo.jpg">
+
+<!-- Precarga del fondo del hero (mejora el LCP / velocidad percibida) -->
+<link rel="preload" as="image" href="./assets/terraza%20de%20verdad.jpg" fetchpriority="high">
 
 <!-- Open Graph / redes sociales -->
 <meta property="og:type" content="website">
@@ -69,9 +72,9 @@
   --color-text-muted:      #574e3d;
   --color-text-faint:      #97896f;
   --color-text-inverse:    #fbf9f4;
-  --color-primary:         #c08410;  /* richer, vivid champagne gold */
-  --color-primary-hover:   #a36e0a;
-  --color-primary-active:  #855a07;
+  --color-primary:         #a06d09;  /* antique gold — cumple WCAG AA (4.5:1) */
+  --color-primary-hover:   #875c07;
+  --color-primary-active:  #6f4b05;
   --color-primary-highlight: #f4e7c5;
   --shadow-sm: 0 2px 6px oklch(0.2 0.04 60 / 0.14);
   --shadow-md: 0 10px 28px oklch(0.2 0.04 60 / 0.18);
@@ -512,7 +515,7 @@ h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
           <div class="stat"><div class="stat-num" data-count="300" data-suffix="">0</div><div class="stat-label">Invitados</div></div>
         </div>
       </div>
-      <img class="nosotros-img fade-in-view" src="./assets/terraza.jpg" alt="Vista interior de la terraza decorada para un evento">
+      <img class="nosotros-img fade-in-view" src="./assets/terraza.jpg" alt="Vista interior de la terraza decorada para un evento" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -783,7 +786,12 @@ h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+        navLinks.forEach(a => {
+          const isActive = a.getAttribute("href") === "#" + id;
+          a.classList.toggle("active", isActive);
+          if (isActive) a.setAttribute("aria-current", "true");
+          else a.removeAttribute("aria-current");
+        });
       }
     });
   }, { rootMargin: "-45% 0px -50% 0px" });
@@ -806,7 +814,7 @@ h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
     btn.setAttribute("aria-label", "Ampliar imagen: " + p.alt);
     btn.dataset.index = i;
     btn.innerHTML =
-      '<img src="' + p.src + '" alt="' + p.alt + '" loading="lazy">' +
+      '<img src="' + p.src + '" alt="' + p.alt + '" loading="lazy" decoding="async">' +
       '<span class="gallery-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>';
     grid.appendChild(btn);
   });
@@ -814,6 +822,7 @@ h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
   const lb = document.getElementById("lightbox");
   const lbImg = document.getElementById("lbImg");
   let current = 0;
+  let lbTrigger = null;
   function show(i) {
     current = (i + photos.length) % photos.length;
     lbImg.src = photos[current].src;
@@ -822,9 +831,12 @@ h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
   grid.addEventListener("click", (e) => {
     const item = e.target.closest(".gallery-item");
     if (!item) return;
+    lbTrigger = item;            // recordar quién abrió el lightbox
     show(+item.dataset.index);
     lb.showModal();
   });
+  // Devolver el foco al elemento que abrió el lightbox al cerrarse
+  lb.addEventListener("close", () => { lbTrigger?.focus(); });
   document.getElementById("lbPrev").addEventListener("click", () => show(current - 1));
   document.getElementById("lbNext").addEventListener("click", () => show(current + 1));
   document.getElementById("lbClose").addEventListener("click", () => lb.close());
