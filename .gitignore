@@ -2,5 +2,8 @@ node_modules/
 .DS_Store
 *.log
 
+# graphify knowledge-graph build artifacts (synced to Obsidian, not the repo)
+graphify-out/
+
 # Stray asset from another project — not part of this site
 lumiaura-screenshot.png

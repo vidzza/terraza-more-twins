@@ -23,10 +23,14 @@ Luego abre http://localhost:3000
 
 ## Notas
 
-- Tema único claro ("white mode"), 100% responsive de 375px a 2560px.
+- Tema oscuro "black-tie nocturno": fondo casi negro cálido, marfil y acento dorado champagne. 100% responsive de 375px a 2560px.
 - Sin dependencias externas salvo Google Fonts y Fontshare.
 - Tipografía: Cormorant Garamond (títulos) + Satoshi (cuerpo).
 - Contacto: +52 33 2608 6585 · WhatsApp · [Facebook](https://www.facebook.com/profile.php?id=61566528497027)
-# terraza-more-twins
-# terraza-more-twins
-# terraza-more-twins
+
+## Despliegue
+
+Se publica en GitHub Pages mediante GitHub Actions (`.github/workflows/jekyll-gh-pages.yml`),
+que sube la carpeta `public/` directamente (sin Jekyll; `public/.nojekyll` lo desactiva).
+Requiere que en **Settings → Pages → Source** esté seleccionado **"GitHub Actions"**.
+Sitio en vivo: <https://vidzza.github.io/terraza-more-twins/>
