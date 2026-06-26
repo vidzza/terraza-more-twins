@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.log
+
+# Stray asset from another project — not part of this site
+lumiaura-screenshot.png

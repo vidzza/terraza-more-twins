@@ -1,0 +1,13 @@
+{
+  "name": "terraza-more-twins",
+  "version": "1.0.0",
+  "description": "Sitio web del salón de eventos Terraza More Twins (Ciudad Juárez)",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

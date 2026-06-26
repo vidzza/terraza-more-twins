@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terraza More Twins — Salón de Eventos en Ciudad Juárez</title>
+<meta name="description" content="Terraza More Twins — el lugar perfecto para tu celebración en Ciudad Juárez. Bodas, XV años, graduaciones y eventos corporativos. Reserva tu fecha.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root, [data-theme="light"] {
+  --color-bg:              #fbf9f4;
+  --color-surface:         #efe8da;
+  --color-surface-2:       #e4dac6;
+  --color-surface-offset:  #1d1812;  /* deep ink — drama sections */
+  --color-surface-offset-2:#d3c6ac;
+  --color-surface-dynamic: #c6b693;
+  --color-divider:         #ddd2bd;
+  --color-border:          #b0a285;
+  --color-text:            #14110c;
+  --color-text-muted:      #574e3d;
+  --color-text-faint:      #97896f;
+  --color-text-inverse:    #fbf9f4;
+  --color-primary:         #c08410;  /* richer, vivid champagne gold */
+  --color-primary-hover:   #a36e0a;
+  --color-primary-active:  #855a07;
+  --color-primary-highlight: #f4e7c5;
+  --shadow-sm: 0 2px 6px oklch(0.2 0.04 60 / 0.14);
+  --shadow-md: 0 10px 28px oklch(0.2 0.04 60 / 0.18);
+  --shadow-lg: 0 28px 64px oklch(0.2 0.04 60 / 0.26);
+  --header-bg: oklch(0.98 0.008 80 / 0.82);
+}
+
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --text-sm:   0.8125rem;
+  --text-base: 1.0625rem;
+  --text-lg:   1.375rem;
+  --text-xl:   clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+  --text-2xl:  clamp(2.75rem, 1.8rem + 4vw, 4.5rem);
+  --text-hero: clamp(3rem, 1.6rem + 7vw, 7rem);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --space-section: clamp(5rem, 3rem + 10vw, 9rem);
+  --container: 1280px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============ RESET ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3 { font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+
+.eyebrow {
+  font-size: var(--text-sm);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 600;
+  display: inline-block;
+}
+.display { font-family: var(--font-display); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  margin-block: 0.5rem 1.25rem;
+  max-width: 18ch;
+}
+.section-title em { font-style: italic; color: var(--color-primary); }
+.lead { color: var(--color-text-muted); max-width: 56ch; font-size: var(--text-lg); font-weight: 300; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  padding: 0.95em 1.9em; min-height: 48px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.02em;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  text-align: center; white-space: nowrap;
+}
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-2px); }
+.btn-primary:active { background: var(--color-primary-active); transform: translateY(0); }
+.btn-ghost { border: 1.5px solid var(--color-text-inverse); color: var(--color-text-inverse); }
+.btn-ghost:hover { background: var(--color-text-inverse); color: var(--color-text); transform: translateY(-2px); }
+.btn-outline { border: 1.5px solid var(--color-border); color: var(--color-text); }
+.btn-outline:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.btn-block { width: 100%; }
+
+/* ============ HEADER ============ */
+.header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.header.scrolled {
+  background: var(--header-bg);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom-color: var(--color-divider);
+  box-shadow: var(--shadow-sm);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; }
+.brand .logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-sm); }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; letter-spacing: 0.01em; }
+.brand-sub { font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-text-muted); margin-top: 3px; }
+
+.nav-links { display: flex; align-items: center; gap: 0.35rem; }
+.nav-links a {
+  padding: 0.5rem 0.85rem; font-size: 0.9rem; font-weight: 500; border-radius: var(--radius-pill);
+  color: var(--color-text-muted); transition: color 0.25s, background 0.25s; position: relative;
+}
+.nav-links a:hover { color: var(--color-text); }
+.nav-links a.active { color: var(--color-primary); }
+.nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+.icon-btn {
+  width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%;
+  color: var(--color-text); transition: background 0.25s, transform 0.25s;
+}
+.icon-btn:hover { background: var(--color-surface-2); }
+.icon-btn svg { width: 20px; height: 20px; }
+
+.hamburger { display: none; }
+
+/* mobile nav panel */
+.mobile-nav {
+  position: fixed; inset: 72px 0 auto 0; z-index: 99;
+  background: var(--header-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-divider);
+  padding: 1rem clamp(1.25rem, 5vw, 4rem) 2rem;
+  display: none; flex-direction: column; gap: 0.25rem;
+}
+.mobile-nav.open { display: flex; }
+@starting-style { .mobile-nav.open { opacity: 0; transform: translateY(-12px); } }
+.mobile-nav { transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
+.mobile-nav a { padding: 0.85rem 0.5rem; font-size: 1.1rem; font-weight: 500; border-bottom: 1px solid var(--color-divider); }
+.mobile-nav a:last-of-type { border-bottom: none; }
+.mobile-nav .btn { margin-top: 1rem; }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative; min-height: 100dvh; display: flex; align-items: center;
+  color: var(--color-text-inverse);
+  background: #1a1714;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url("./assets/terraza%20de%20verdad.jpg") center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, oklch(0.08 0.02 60 / 0.92) 0%, oklch(0.08 0.02 60 / 0.45) 45%, oklch(0.08 0.02 60 / 0.25) 100%);
+}
+.hero .container { position: relative; z-index: 1; padding-block: 8rem 6rem; }
+.hero-content { max-width: 820px; }
+.hero .eyebrow { color: var(--color-primary); }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: var(--text-hero); margin-block: 1rem 1.5rem; letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.hero h1 em { font-style: italic; }
+.hero-sub { font-size: var(--text-lg); font-weight: 300; max-width: 56ch; color: oklch(0.95 0.01 80 / 0.9); margin-bottom: 2.5rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.scroll-ind {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 1;
+  color: oklch(0.95 0.01 80 / 0.7); animation: bounce 2.4s ease-in-out infinite;
+}
+.scroll-ind svg { width: 28px; height: 28px; }
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+
+/* hero entrance */
+.hero-reveal { animation: heroIn 0.9s var(--ease) both; }
+@keyframes heroIn { from { opacity: 0; clip-path: inset(22% 0 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+.hero .eyebrow.hero-reveal { animation-delay: 0.1s; }
+.hero h1.hero-reveal { animation-delay: 0.25s; }
+.hero-sub.hero-reveal { animation-delay: 0.4s; }
+.hero-cta.hero-reveal { animation-delay: 0.55s; }
+
+/* ============ SCROLL REVEAL ============ */
+@supports (animation-timeline: view()) {
+  .fade-in-view {
+    clip-path: inset(8% 0 0 0); opacity: 0;
+    animation: reveal-section linear both;
+    animation-timeline: view(); animation-range: entry 0% entry 75%;
+  }
+  @keyframes reveal-section { to { clip-path: inset(0 0 0 0); opacity: 1; } }
+}
+
+/* ============ NOSOTROS ============ */
+.section { padding-block: var(--space-section); }
+.nosotros-grid {
+  display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .nosotros-grid { grid-template-columns: 55fr 45fr; } }
+.nosotros-text p { color: var(--color-text-muted); margin-bottom: 1.1rem; max-width: 54ch; }
+.nosotros-img { border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.stat { border-top: 2px solid var(--color-primary); padding-top: 1rem; }
+.stat-num { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; color: var(--color-primary); line-height: 1; }
+.stat-label { font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.5rem; }
+
+/* ============ GALERÍA ============ */
+.gallery { background: var(--color-surface); }
+.gallery-head { max-width: 600px; margin-bottom: 3rem; }
+.gallery-grid { columns: 1; column-gap: 1.25rem; }
+@media (min-width: 600px) { .gallery-grid { columns: 2; } }
+@media (min-width: 1024px) { .gallery-grid { columns: 3; } }
+.gallery-item {
+  position: relative; break-inside: avoid; margin-bottom: 1.25rem; border-radius: var(--radius-lg);
+  overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); display: block; width: 100%;
+}
+@supports (animation-timeline: view()) {
+  .gallery-item { opacity: 0; animation: galIn linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+  @keyframes galIn { to { opacity: 1; } }
+}
+.gallery-item img { width: 100%; transition: transform 0.6s var(--ease); }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item::after {
+  content: ""; position: absolute; inset: 0;
+  background: oklch(0.1 0.01 60 / 0); transition: background 0.3s var(--ease);
+}
+.gallery-item:hover::after { background: oklch(0.1 0.01 60 / 0.55); }
+.gallery-zoom {
+  position: absolute; inset: 0; z-index: 2; display: grid; place-items: center;
+  color: #fff; opacity: 0; transition: opacity 0.3s var(--ease); pointer-events: none;
+}
+.gallery-item:hover .gallery-zoom { opacity: 1; }
+.gallery-zoom svg { width: 40px; height: 40px; }
+
+/* lightbox */
+.lightbox { border: none; background: oklch(0.08 0.01 60 / 0.92); padding: 0; max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; }
+.lightbox::backdrop { background: oklch(0.08 0.01 60 / 0.92); }
+.lightbox[open] { display: grid; place-items: center; }
+@starting-style { .lightbox[open] { opacity: 0; } .lightbox[open] .lightbox-img { transform: scale(0.94); } }
+.lightbox { opacity: 1; transition: opacity 0.3s var(--ease) allow-discrete; }
+.lightbox-img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); transition: transform 0.3s var(--ease); }
+.lb-btn { position: fixed; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; border-radius: 50%; background: oklch(1 0 0 / 0.12); color: #fff; display: grid; place-items: center; transition: background 0.25s; }
+.lb-btn:hover { background: oklch(1 0 0 / 0.25); }
+.lb-prev { left: 1.5rem; } .lb-next { right: 1.5rem; }
+.lb-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 48px; height: 48px; border-radius: 50%; background: oklch(1 0 0 / 0.12); color: #fff; display: grid; place-items: center; transition: background 0.25s; }
+.lb-close:hover { background: oklch(1 0 0 / 0.25); }
+.lb-btn svg, .lb-close svg { width: 24px; height: 24px; }
+
+/* ============ SERVICIOS ============ */
+.servicios-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
+@media (min-width: 800px) { .servicios-grid { grid-template-columns: repeat(2, 1fr); } }
+.service-card {
+  position: relative; overflow: hidden; border-radius: var(--radius-lg);
+  min-height: 280px; padding: 2.25rem; display: flex; flex-direction: column; justify-content: flex-end;
+  color: #fff; isolation: isolate; box-shadow: var(--shadow-md);
+}
+.service-card .sc-bg { position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center; transition: transform 0.7s var(--ease); }
+.service-card:hover .sc-bg { transform: scale(1.06); }
+.service-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, oklch(0.1 0.02 60 / 0.9) 0%, oklch(0.1 0.02 60 / 0.45) 60%, oklch(0.1 0.02 60 / 0.3) 100%);
+}
+.sc-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-primary); font-weight: 500; line-height: 1; margin-bottom: 0.75rem; }
+.sc-title { font-family: var(--font-display); font-size: 1.85rem; font-weight: 500; margin-bottom: 0.5rem; }
+.sc-desc { font-size: 0.95rem; color: oklch(0.95 0.01 80 / 0.85); max-width: 42ch; }
+
+/* ============ BOOKING ============ */
+.booking { background: var(--color-surface); }
+.booking-grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (min-width: 950px) { .booking-grid { grid-template-columns: 38fr 62fr; } }
+.booking-aside p { color: var(--color-text-muted); margin-top: 1rem; max-width: 40ch; }
+.booking-aside .perk { display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1.5rem; }
+.booking-aside .perk svg { width: 22px; height: 22px; color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+.booking-aside .perk span { font-size: 0.95rem; }
+
+.form { background: var(--color-bg); border: 1px solid var(--color-divider); border-radius: var(--radius-xl); padding: clamp(1.5rem, 4vw, 2.75rem); box-shadow: var(--shadow-md); }
+.form-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 560px) { .form-row.two { grid-template-columns: 1fr 1fr; } }
+.field { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.25rem; }
+.field label { font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.02em; }
+.field label .req { color: var(--color-primary); }
+.field input, .field select, .field textarea {
+  min-height: 50px; padding: 0.7rem 0.95rem; background: var(--color-surface);
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+  transition: border-color 0.25s, background 0.25s; width: 100%;
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--color-primary); outline: none; background: var(--color-bg); }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #c0392b; }
+.field .err { font-size: 0.78rem; color: #c0392b; display: none; }
+.field.invalid .err { display: block; }
+.phone-group { display: flex; gap: 0.6rem; }
+.phone-group select { max-width: 130px; }
+.field input[type="date"], .field input[type="time"] { color-scheme: light; }
+
+.form-success { display: none; text-align: center; padding: 1rem 0; }
+.form.sent .form-body { display: none; }
+.form.sent .form-success { display: block; animation: fadeUp 0.5s var(--ease) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.check-svg { width: 84px; height: 84px; margin: 0 auto 1.25rem; display: block; }
+.check-svg circle { stroke: var(--color-primary); stroke-width: 3; fill: none; stroke-dasharray: 290; stroke-dashoffset: 290; animation: dash 0.7s var(--ease) forwards; }
+.check-svg path { stroke: var(--color-primary); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: dash 0.5s 0.5s var(--ease) forwards; }
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.form-success h3 { font-family: var(--font-display); font-size: 1.9rem; margin-bottom: 0.5rem; }
+.form-success p { color: var(--color-text-muted); max-width: 42ch; margin: 0 auto 1.75rem; }
+
+/* ============ CONTACTO ============ */
+.contacto { background: var(--color-surface-offset); color: var(--color-text-inverse); }
+.contacto .section-title { color: var(--color-text-inverse); }
+.contacto-grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: stretch; }
+@media (min-width: 900px) { .contacto-grid { grid-template-columns: 1fr 1.1fr; } }
+.contact-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-item .ci-icon { width: 46px; height: 46px; border-radius: 50%; background: oklch(1 0 0 / 0.06); border: 1px solid oklch(1 0 0 / 0.15); display: grid; place-items: center; flex-shrink: 0; color: var(--color-primary); }
+.contact-item .ci-icon svg { width: 20px; height: 20px; }
+.contact-item .ci-label { font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.1em; color: oklch(0.85 0.02 80 / 0.65); }
+.contact-item .ci-val { font-size: 1.05rem; font-weight: 500; }
+.contact-item a.ci-val:hover { color: var(--color-primary); }
+.map-wrap { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); min-height: 340px; height: 100%; }
+.map-wrap iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+
+/* ============ FOOTER ============ */
+.footer { background: var(--color-text); color: var(--color-text-inverse); padding-block: 4rem 2rem; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 700px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+.footer .brand-name { color: var(--color-text-inverse); }
+.footer-tag { color: oklch(0.85 0.01 80 / 0.7); max-width: 36ch; margin-top: 1rem; font-weight: 300; }
+.footer h4 { font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-primary); margin-bottom: 1.1rem; }
+.footer-col a { display: block; color: oklch(0.9 0.01 80 / 0.75); padding: 0.35rem 0; transition: color 0.2s; }
+.footer-col a:hover { color: var(--color-primary); }
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-socials a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid oklch(1 0 0 / 0.2); display: grid; place-items: center; color: var(--color-text-inverse); transition: background 0.25s, border-color 0.25s; }
+.footer-socials a:hover { background: var(--color-primary); border-color: var(--color-primary); }
+.footer-socials svg { width: 20px; height: 20px; }
+.footer-bottom { margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid oklch(1 0 0 / 0.12); display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; font-size: 0.85rem; color: oklch(0.85 0.01 80 / 0.6); }
+
+/* ============ FLOATING CONTACT ============ */
+.fab { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 90; display: flex; flex-direction: column; gap: 0.75rem; }
+.fab a { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: var(--shadow-md); transition: transform 0.25s var(--ease); }
+.fab a:hover { transform: scale(1.08); }
+.fab svg { width: 26px; height: 26px; }
+.btn-whatsapp { background: #25d366; animation: pulse-gold 2.6s ease-in-out infinite; }
+.btn-phone { background: var(--color-primary); }
+@keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 0 0 oklch(0.78 0.16 150 / 0.5); } 50% { box-shadow: 0 0 0 14px oklch(0.78 0.16 150 / 0); } }
+
+/* ============ RESPONSIVE NAV ============ */
+@media (max-width: 1000px) {
+  .nav-links, .nav-actions .desktop-cta { display: none; }
+  .hamburger { display: grid; }
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .hero-reveal, .fade-in-view, .gallery-item { opacity: 1 !important; clip-path: none !important; }
+  .check-svg circle, .check-svg path { stroke-dashoffset: 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" class="brand" aria-label="Terraza More Twins — Inicio">
+        <img class="logo-img" src="./assets/logo.jpg" alt="Logo de Terraza More Twins">
+        <span class="brand-text">
+          <span class="brand-name">Terraza More Twins</span>
+          <span class="brand-sub">Salón de Eventos</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#galeria">Galería</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#booking">Reservar</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#booking" class="btn btn-primary desktop-cta">Reservar Ahora</a>
+        <button class="icon-btn hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Menú móvil">
+  <a href="#inicio">Inicio</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#galeria">Galería</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#booking">Reservar</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#booking" class="btn btn-primary btn-block">Reservar Ahora</a>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" role="img" aria-label="Terraza More Twins iluminada de noche para un evento"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow hero-reveal">El lugar perfecto para tu celebración</span>
+      <h1 class="hero-reveal">Donde <em>tu evento</em> se vuelve inolvidable</h1>
+      <p class="hero-sub hero-reveal">Un espacio elegante en Ciudad Juárez para bodas, XV años, graduaciones y celebraciones que merecen lo mejor. Tu fecha, nuestra dedicación.</p>
+      <div class="hero-cta hero-reveal">
+        <a href="#booking" class="btn btn-primary">Reservar mi Fecha</a>
+        <a href="#galeria" class="btn btn-ghost">Ver Galería</a>
+      </div>
+    </div>
+  </div>
+  <a href="#nosotros" class="scroll-ind" aria-label="Desplázate hacia abajo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ============ NOSOTROS ============ -->
+<section class="section" id="nosotros">
+  <div class="container">
+    <div class="nosotros-grid">
+      <div class="nosotros-text fade-in-view">
+        <span class="eyebrow">Nuestro Salón</span>
+        <h2 class="section-title">Un espacio pensado para <em>momentos</em> que se recuerdan</h2>
+        <p>En Terraza More Twins creemos que cada celebración merece un escenario a su altura. Nuestra terraza combina amplitud, iluminación cálida y un ambiente versátil que se adapta tanto a una boda de ensueño como a una fiesta íntima.</p>
+        <p>Te acompañamos en cada detalle —desde la planeación hasta el último brindis— para que tú solo te ocupes de disfrutar. Atención personalizada, espacios cuidados y la experiencia de quienes han visto crecer cientos de festejos.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-num" data-count="300" data-suffix="+">0</div><div class="stat-label">Eventos</div></div>
+          <div class="stat"><div class="stat-num" data-count="15" data-suffix="">0</div><div class="stat-label">Años</div></div>
+          <div class="stat"><div class="stat-num" data-count="300" data-suffix="">0</div><div class="stat-label">Invitados</div></div>
+        </div>
+      </div>
+      <img class="nosotros-img fade-in-view" src="./assets/terraza.jpg" alt="Vista interior de la terraza decorada para un evento">
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="section gallery" id="galeria">
+  <div class="container">
+    <div class="gallery-head fade-in-view">
+      <span class="eyebrow">Galería</span>
+      <h2 class="section-title">Cada rincón, listo para <em>tu historia</em></h2>
+      <p class="lead">Explora nuestros espacios y momentos reales celebrados en Terraza More Twins.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- items injected by JS -->
+    </div>
+  </div>
+</section>
+
+<dialog class="lightbox" id="lightbox" aria-label="Vista ampliada de la galería">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img class="lightbox-img" id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+</dialog>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="fade-in-view" style="max-width:620px">
+      <span class="eyebrow">Lo que incluye</span>
+      <h2 class="section-title">Todo lo que necesitas, en <em>un solo lugar</em></h2>
+      <p class="lead">Servicios pensados para que tu evento fluya sin preocupaciones, de principio a fin.</p>
+    </div>
+    <div class="servicios-grid">
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/terraza%20de%20verdad.jpg')"></div><div class="sc-num">01</div><h3 class="sc-title">Espacio y Salón</h3><p class="sc-desc">Terraza amplia y versátil con capacidad para hasta 300 invitados, lista para adaptarse a tu estilo.</p></article>
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/party%20with%20food.jpg')"></div><div class="sc-num">02</div><h3 class="sc-title">Catering y Banquetes</h3><p class="sc-desc">Opciones de menú y banquetes para deleitar a tus invitados, desde bocadillos hasta cena formal.</p></article>
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/terraza.jpg')"></div><div class="sc-num">03</div><h3 class="sc-title">Decoración</h3><p class="sc-desc">Paquetes de decoración a tu medida para crear el ambiente exacto que imaginas para tu celebración.</p></article>
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/baby%20shower.jpg')"></div><div class="sc-num">04</div><h3 class="sc-title">Iluminación y Sonido</h3><p class="sc-desc">Equipo de audio e iluminación profesional para que la música y el ambiente nunca fallen.</p></article>
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/party%20bus.jpg')"></div><div class="sc-num">05</div><h3 class="sc-title">Transporte y Party Bus</h3><p class="sc-desc">Servicio de party bus para que tú y tus invitados lleguen y disfruten sin preocuparse del camino.</p></article>
+      <article class="service-card fade-in-view"><div class="sc-bg" style="background-image:url('./assets/de%20lado.jpg')"></div><div class="sc-num">06</div><h3 class="sc-title">Coordinación</h3><p class="sc-desc">Te acompañamos en la planeación de cada detalle para que tu único trabajo sea disfrutar.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="section booking" id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-aside fade-in-view">
+        <span class="eyebrow">Reservaciones</span>
+        <h2 class="section-title">Aparta <em>tu fecha</em> hoy</h2>
+        <p>Cuéntanos sobre tu evento y nos pondremos en contacto contigo en menos de 24 horas para afinar cada detalle.</p>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Respuesta en menos de 24 horas</span></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Asesoría personalizada y sin compromiso</span></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Paquetes a la medida de tu presupuesto</span></div>
+      </div>
+
+      <form class="form fade-in-view" id="bookingForm" novalidate>
+        <div class="form-body">
+          <div class="field">
+            <label for="nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+            <span class="err">Por favor escribe tu nombre.</span>
+          </div>
+
+          <div class="form-row two">
+            <div class="field">
+              <label for="tel">Teléfono / WhatsApp <span class="req">*</span></label>
+              <div class="phone-group">
+                <select id="lada" name="lada" aria-label="Código de país">
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+1">🇺🇸 +1</option>
+                </select>
+                <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" required>
+              </div>
+              <span class="err">Escribe un teléfono válido.</span>
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico <span class="req">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="err">Escribe un correo válido.</span>
+            </div>
+          </div>
+
+          <div class="form-row two">
+            <div class="field">
+              <label for="tipo">Tipo de evento <span class="req">*</span></label>
+              <select id="tipo" name="tipo" required>
+                <option value="">Selecciona…</option>
+                <option>Boda</option>
+                <option>XV Años</option>
+                <option>Graduación</option>
+                <option>Evento Corporativo</option>
+                <option>Baby Shower</option>
+                <option>Cumpleaños</option>
+                <option>Otro</option>
+              </select>
+              <span class="err">Selecciona un tipo de evento.</span>
+            </div>
+            <div class="field">
+              <label for="invitados">N.º de invitados <span class="req">*</span></label>
+              <input type="number" id="invitados" name="invitados" min="1" max="500" required>
+              <span class="err">Indica entre 1 y 500 invitados.</span>
+            </div>
+          </div>
+
+          <div class="form-row two">
+            <div class="field">
+              <label for="fecha">Fecha deseada <span class="req">*</span></label>
+              <input type="date" id="fecha" name="fecha" required>
+              <span class="err">Elige una fecha.</span>
+            </div>
+            <div class="field">
+              <label for="hora">Hora del evento</label>
+              <input type="time" id="hora" name="hora">
+              <span class="err"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="mensaje">Mensaje adicional</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos cualquier detalle especial…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud de Reserva</button>
+        </div>
+
+        <div class="form-success" aria-live="polite">
+          <svg class="check-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M30 52l13 13 27-29"/></svg>
+          <h3>¡Tu solicitud fue enviada!</h3>
+          <p>Te contactaremos en menos de 24 horas. Si prefieres, escríbenos directamente por WhatsApp.</p>
+          <a class="btn btn-primary" id="successWa" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="section contacto" id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="fade-in-view">
+        <span class="eyebrow">Contacto</span>
+        <h2 class="section-title">Estamos para <em>ayudarte</em></h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="ci-label">Dirección</div><div class="ci-val">Calle Sierra de Babícora 5266<br>Ciudad Juárez, Chihuahua, México</div></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><div class="ci-label">Teléfono / WhatsApp</div><a class="ci-val" href="tel:+523326086585">+52 33 2608 6585</a></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><div class="ci-label">Horario</div><div class="ci-val">Lun – Dom · 10:00 AM – 8:00 PM</div></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span>
+            <div><div class="ci-label">Redes sociales</div><a class="ci-val" href="https://www.facebook.com/profile.php?id=61566528497027" target="_blank" rel="noopener">Síguenos en Facebook</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap fade-in-view">
+        <iframe title="Ubicación de Terraza More Twins en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Terraza+More+Twins,Ciudad+Juarez&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="brand-name" style="font-size:1.6rem">Terraza More Twins</span></div>
+        <p class="footer-tag">El lugar perfecto para tu celebración en Ciudad Juárez. Bodas, XV años, graduaciones y más.</p>
+        <div class="footer-socials" style="margin-top:1.5rem">
+          <a href="https://www.facebook.com/profile.php?id=61566528497027" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://wa.me/523326086585" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-.9 1.1-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.8 7c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 9.1a5 5 0 0 0 1 2.6 11.2 11.2 0 0 0 4.4 3.9c2 .8 2 .6 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#galeria">Galería</a>
+        <a href="#servicios">Servicios</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="#booking">Reservar</a>
+        <a href="tel:+523326086585">+52 33 2608 6585</a>
+        <a href="https://wa.me/523326086585" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#contacto">Ubicación</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Terraza More Twins. Todos los derechos reservados.</span>
+      <span>Diseñado con ♥ para hacer de cada momento un recuerdo.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING CONTACT ============ -->
+<div class="fab">
+  <a class="btn-whatsapp" href="https://wa.me/523326086585?text=Hola%2C%20me%20interesa%20reservar%20en%20Terraza%20More%20Twins" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-.9 1.1-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.5.3-.5a.5.5 0 0 0 0-.5L8.8 7c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 9.1a5 5 0 0 0 1 2.6 11.2 11.2 0 0 0 4.4 3.9c2 .8 2 .6 2.4.5a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+  </a>
+  <a class="btn-phone" href="tel:+523326086585" aria-label="Llamar por teléfono">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+</div>
+
+<script defer>
+(function () {
+  "use strict";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Year ---- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---- Hamburger ---- */
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobileNav");
+  function closeMenu() { mobileNav.classList.remove("open"); hamburger.setAttribute("aria-expanded", "false"); }
+  hamburger.addEventListener("click", () => {
+    const open = mobileNav.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", String(open));
+  });
+  mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+  /* ---- 8. Header blur on scroll ---- */
+  const header = document.getElementById("header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 60);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ---- 3. Stat counters ---- */
+  const counters = document.querySelectorAll(".stat-num");
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || "";
+      if (reduceMotion) { el.textContent = target.toLocaleString("es-MX") + suffix; countObs.unobserve(el); return; }
+      const dur = 1800; const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString("es-MX") + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countObs.observe(c));
+
+  /* ---- 9. Active nav state ---- */
+  const navLinks = document.querySelectorAll(".nav-links a");
+  const sections = document.querySelectorAll("main section[id]");
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach(s => navObs.observe(s));
+
+  /* ---- Build gallery + 4. Lightbox ---- */
+  const photos = [
+    { src: "./assets/terraza%20de%20verdad.jpg", alt: "Terraza More Twins iluminada de noche para un evento" },
+    { src: "./assets/terraza.jpg", alt: "Vista interior de la terraza decorada" },
+    { src: "./assets/de%20lado.jpg", alt: "Vista lateral del salón de eventos" },
+    { src: "./assets/party%20with%20food.jpg", alt: "Mesa de banquete servida para una fiesta" },
+    { src: "./assets/baby%20shower.jpg", alt: "Decoración para un baby shower en la terraza" },
+    { src: "./assets/party%20bus.jpg", alt: "Party bus disponible para los eventos" },
+    { src: "./assets/710745687_122212102694550949_7631736280786868933_n.jpg", alt: "Celebración en Terraza More Twins" }
+  ];
+  const grid = document.getElementById("galleryGrid");
+  photos.forEach((p, i) => {
+    const btn = document.createElement("button");
+    btn.className = "gallery-item";
+    btn.setAttribute("aria-label", "Ampliar imagen: " + p.alt);
+    btn.dataset.index = i;
+    btn.innerHTML =
+      '<img src="' + p.src + '" alt="' + p.alt + '" loading="lazy">' +
+      '<span class="gallery-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>';
+    grid.appendChild(btn);
+  });
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  let current = 0;
+  function show(i) {
+    current = (i + photos.length) % photos.length;
+    lbImg.src = photos[current].src;
+    lbImg.alt = photos[current].alt;
+  }
+  grid.addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item");
+    if (!item) return;
+    show(+item.dataset.index);
+    lb.showModal();
+  });
+  document.getElementById("lbPrev").addEventListener("click", () => show(current - 1));
+  document.getElementById("lbNext").addEventListener("click", () => show(current + 1));
+  document.getElementById("lbClose").addEventListener("click", () => lb.close());
+  lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!lb.open) return;
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+
+  /* ---- 5 & 6. Form validation + success ---- */
+  const form = document.getElementById("bookingForm");
+  function validateField(field) {
+    const input = field.querySelector("input, select, textarea");
+    if (!input || !input.hasAttribute("required") && input.value === "") return true;
+    let ok = input.checkValidity() && input.value.trim() !== "";
+    if (input.id === "invitados") { const n = +input.value; ok = n >= 1 && n <= 500; }
+    field.classList.toggle("invalid", !ok);
+    return ok;
+  }
+  form.querySelectorAll(".field").forEach(field => {
+    const input = field.querySelector("input, select, textarea");
+    if (!input) return;
+    input.addEventListener("blur", () => { if (field.classList.contains("invalid") || input.value) validateField(field); });
+    input.addEventListener("input", () => { if (field.classList.contains("invalid")) validateField(field); });
+  });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
+    form.querySelectorAll(".field").forEach(field => {
+      const input = field.querySelector("[required]");
+      if (input && !validateField(field)) valid = false;
+    });
+    if (!valid) { form.querySelector(".invalid input, .invalid select")?.focus(); return; }
+
+    // Build WhatsApp prefilled message
+    const get = id => (document.getElementById(id)?.value || "").trim();
+    const msg =
+      "Hola! Quiero reservar en Terraza More Twins.%0A" +
+      "Nombre: " + encodeURIComponent(get("nombre")) + "%0A" +
+      "Evento: " + encodeURIComponent(get("tipo")) + "%0A" +
+      "Fecha: " + encodeURIComponent(get("fecha")) + (get("hora") ? " " + encodeURIComponent(get("hora")) : "") + "%0A" +
+      "Invitados: " + encodeURIComponent(get("invitados"));
+    document.getElementById("successWa").href = "https://wa.me/523326086585?text=" + msg;
+    form.classList.add("sent");
+    form.querySelector(".form-success").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  });
+
+  /* set min date = today */
+  const fecha = document.getElementById("fecha");
+  if (fecha) fecha.min = new Date().toISOString().split("T")[0];
+})();
+</script>
+</body>
+</html>
